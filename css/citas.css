@@ -1,0 +1,466 @@
+/* Estilos específicos para la página de citas */
+
+/* Hero Section */
+.citas-hero {
+    background: linear-gradient(rgba(124, 169, 139, 0.471), rgba(124, 169, 139, 0.992)), url('../img/citas.jpg') center/cover;
+    padding: 100px 0;
+    text-align: center;
+    color: white;
+    margin: 0 0 60px;
+    margin-top: 80px;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+
+/* Appointment Section */
+.appointment-section {
+    padding: 0 0 80px;
+}
+
+.appointment-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #f0f8f2;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.appointment-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.appointment-info h3 {
+    font-size: 1.8rem;
+    color: #3a4d3f;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.appointment-info p {
+    margin-bottom: 15px;
+    line-height: 1.7;
+    color: #4e6b5a;
+}
+
+.appointment-types {
+    margin-top: 30px;
+}
+
+.appointment-type {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.appointment-type:hover {
+    transform: translateY(-5px);
+}
+
+.appointment-type i {
+    font-size: 1.5rem;
+    color: #7ca98b;
+    background: #e3f6e8;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.appointment-type h4 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #3a4d3f;
+}
+
+.appointment-type p {
+    font-size: 0.9rem;
+    color: #4e6b5a;
+    margin-bottom: 0;
+}
+
+/* Scheduler */
+.scheduler {
+    flex: 1;
+    min-width: 300px;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.scheduler-header {
+    margin-bottom: 20px;
+}
+
+.month-selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.month-selector button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #7ca98b;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+.month-selector button:hover {
+    color: #3a4d3f;
+}
+
+.month-selector h3 {
+    font-size: 1.5rem;
+    color: #3a4d3f;
+    margin: 0;
+    text-align: center;
+}
+
+.calendar-container {
+    margin-bottom: 20px;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #3a4d3f;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.calendar-day {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.calendar-day:hover {
+    background: #e3f6e8;
+}
+
+.calendar-day.current {
+    border: 1px solid #7ca98b;
+}
+
+.calendar-day.selected {
+    background: #7ca98b;
+    color: white;
+}
+
+.calendar-day.unavailable {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.calendar-day.past {
+    color: #aaa;
+    cursor: not-allowed;
+}
+
+.time-slots {
+    background: #f9fdf9;
+    padding: 20px;
+    border-radius: 8px;
+    min-height: 150px;
+}
+
+.time-slots h4 {
+    color: #3a4d3f;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.time-slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.time-slot {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #cbead6;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.time-slot:hover {
+    background: #e3f6e8;
+}
+
+.time-slot.selected {
+    background: #7ca98b;
+    color: white;
+}
+
+.time-slot.unavailable {
+    color: #ccc;
+    border-color: #eee;
+    cursor: not-allowed;
+}
+
+/* Form */
+.appointment-form-container {
+    max-width: 800px;
+    margin: 40px auto 0;
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.appointment-form-container h3 {
+    font-size: 1.8rem;
+    color: #3a4d3f;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.booking-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group:nth-child(5) {
+    grid-column: span 2;
+}
+
+.form-summary {
+    grid-column: span 2;
+    background: #f0f8f2;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.form-summary h4 {
+    color: #3a4d3f;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.form-summary p {
+    margin-bottom: 5px;
+    color: #4e6b5a;
+}
+
+.submit-button {
+    grid-column: span 2;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow: auto;
+}
+
+.modal-content {
+    background: white;
+    margin: 10% auto;
+    padding: 40px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    animation: modalFadeIn 0.5s;
+}
+
+@keyframes modalFadeIn {
+    from {opacity: 0; transform: translateY(-50px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #7ca98b;
+}
+
+.success-icon {
+    font-size: 4rem;
+    color: #7ca98b;
+    margin-bottom: 20px;
+}
+
+.modal-content h3 {
+    font-size: 1.8rem;
+    color: #3a4d3f;
+    margin-bottom: 15px;
+}
+
+.appointment-details {
+    background: #f0f8f2;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.appointment-details p {
+    margin-bottom: 10px;
+    color: #4e6b5a;
+}
+
+.modal-message {
+    margin-bottom: 25px;
+    font-style: italic;
+    color: #4e6b5a;
+}
+
+.modal-button {
+    background: #7ca98b;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.modal-button:hover {
+    background: #3a4d3f;
+    transform: translateY(-3px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+    .citas-hero {
+        background: linear-gradient(rgba(124, 169, 139, 0.471), rgba(124, 169, 139, 0.992)), url('../img/citas.jpg') center/cover;
+        padding: 100px 0;
+        text-align: center;
+        color: white;
+        margin: 0 0 60px;
+        margin-top: 30px;
+    }
+    .appointment-container {
+        padding: 25px;
+    }
+    
+    .scheduler {
+        padding: 20px;
+    }
+    
+    .booking-form {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-group:nth-child(5),
+    
+    .form-summary,
+    .submit-button {
+        grid-column: span 1;
+    }
+    
+    .appointment-form-container {
+        padding: 25px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        width: 95%;
+
+    }
+    .scheduler {
+        width: 90%;
+        max-width: 500px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: -10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .citas-hero {
+        padding: 60px 0;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .appointment-container,
+    .appointment-form-container {
+        padding: 20px;
+    }
+    
+    .time-slots-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .modal-content {
+        width: 90%;
+        padding: 30px 20px;
+    }
+} 

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda tu Cita - Daniela Moreno</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/citas.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Oswald:wght@400;700&family=Pacifico&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <div class="nav-container">
+                <div class="nav-left">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html#sobre-mi">SOBRE MÍ</a></li>
+                        <li class="nav-item"><a href="index.html#mi-trabajo">MI TRABAJO</a></li>
+                        <li class="nav-item"><a href="index.html#Especialidad">ESPECIALIDAD</a></li>
+                    </ul>
+                </div>
+
+                <div class="logo">
+                    <a href="index.html" class="logo-link">
+                        <span class="logo-mm">DM</span>
+                        <span class="logo-name">DANIELA MORENO</span>
+                    </a>
+                </div>
+
+                <div class="nav-right">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html#proceso">PROCESO</a></li>
+                        <li class="nav-item"><a href="index.html#contacto">CONTACTO</a></li>
+                        <li class="nav-item btn-cita active"><a href="citas.html">PEDIR CITA</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="citas-hero" data-aos="fade-up">
+            <div class="hero-content">
+                <h1>Agenda tu Cita</h1>
+                <p>Da el primer paso hacia tu bienestar emocional reservando una sesión conmigo.</p>
+                <p>Consulta mi disponibilidad y elige el horario que mejor se adapte a tus necesidades.</p>
+            </div>
+        </section>
+
+        <!-- Appointment Section -->
+        <section class="appointment-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Elige tu Fecha y Hora</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="appointment-container">
+                <div class="appointment-info">
+                    <h3>Información <br> de la Cita</h3>
+                    <p>Las sesiones tienen una duración de 50 minutos.</p>
+                    <p>El precio por sesión es de 70€ (primeras consultas) y 60€ (seguimiento).</p>
+                    <p>Si necesitas cancelar o reprogramar tu cita, por favor hazlo con al menos 24 horas de antelación.</p>
+                    
+                    <div class="appointment-types">
+                        <div class="appointment-type">
+                            <i class="fas fa-user"></i>
+                            <div>
+                                <h4>Sesión Presencial</h4>
+                                <p>En mi consulta de Madrid</p>
+                            </div>
+                        </div>
+                        <div class="appointment-type">
+                            <i class="fas fa-video"></i>
+                            <div>
+                                <h4>Sesión Online</h4>
+                                <p>Por videollamada</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scheduler">
+                    <div class="scheduler-header">
+                        <div class="month-selector">
+                            <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                            <h3 id="current-month">Mes Actual</h3>
+                            <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="calendar-container">
+                        <div class="weekdays">
+                            <div>Lun</div>
+                            <div>Mar</div>
+                            <div>Mié</div>
+                            <div>Jue</div>
+                            <div>Vie</div>
+                            <div>Sáb</div>
+                            <div>Dom</div>
+                        </div>
+                        <div id="calendar-days" class="calendar-days"></div>
+                    </div>
+
+                    <div id="time-slots" class="time-slots">
+                        <h4>Selecciona una fecha para ver horarios disponibles</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div id="appointment-form" class="appointment-form-container" style="display: none;">
+                <h3>Completa tus datos</h3>
+                <form id="booking-form" class="booking-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre completo</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo-sesion">Tipo de sesión</label>
+                        <select id="tipo-sesion" name="tipo-sesion" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="presencial">Presencial</option>
+                            <option value="online">Online</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="motivo">Motivo de consulta (opcional)</label>
+                        <textarea id="motivo" name="motivo" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-summary">
+                        <h4>Resumen de tu cita</h4>
+                        <p id="summary-date">Fecha: <span></span></p>
+                        <p id="summary-time">Hora: <span></span></p>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">Confirmar Cita</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Confirmation Modal -->
+        <div id="confirmation-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>¡Cita Agendada con Éxito!</h3>
+                <p>Se ha enviado un correo de confirmación a tu email con los detalles de tu cita.</p>
+                <div class="appointment-details">
+                    <p><strong>Fecha:</strong> <span id="modal-date"></span></p>
+                    <p><strong>Hora:</strong> <span id="modal-time"></span></p>
+                    <p><strong>Tipo:</strong> <span id="modal-type"></span></p>
+                </div>
+                <p class="modal-message">¡Gracias por confiar en mí para tu proceso terapéutico!</p>
+                <button class="modal-button">Volver al Inicio</button>
+            </div>
+        </div>
+    </main>
+
+    <footer id="contacto" class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <a href="index.html" class="footer-logo-link">
+                        <span class="logo-mm">DM</span>
+                        <span class="logo-name">DANIELA MORENO</span>
+                    </a>
+                </div>
+                <p>Psicóloga colegiada especializada en terapia cognitivo-conductual y mindfulness.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Calle Ejemplo 123, Madrid</p>
+                <p><i class="fas fa-phone"></i> +34 600 123 456</p>
+                <p><i class="fas fa-envelope"></i> info@Danielamoreno.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Horario</h3>
+                <p>Lunes a Viernes: 9:00 - 20:00</p>
+                <p>Sábados: 10:00 - 14:00</p>
+                <p>Domingos: Cerrado</p>
+            </div>
+            <div class="footer-section">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Daniela Moreno Psicología. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/citas.js"></script>
+</body>
+
+</html> 
