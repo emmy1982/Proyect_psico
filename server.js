@@ -13,10 +13,10 @@ app.use(express.static('.')); // Serve static files from current directory
 
 // Configuración de nodemailer para enviar emails
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  service: 'outlook',
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_APP_PASSWORD // Contraseña de aplicación generada para Gmail
+    user: 'emmyjose82@hotmail.com',
+    pass: process.env.EMAIL_PASSWORD // Contraseña de la cuenta de Hotmail
   }
 });
 
@@ -27,7 +27,7 @@ app.post('/api/sendEmailConfirmation', async (req, res) => {
     
     // Configurar el email
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+      from: 'emmyjose82@hotmail.com',
       to: email,
       subject: 'Confirmación de Cita - Daniela Moreno Psicología',
       html: `

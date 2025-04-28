@@ -13,7 +13,7 @@ Sitio web para la psicóloga Daniela Moreno con sistema de reserva de citas que 
 ## Requisitos
 
 - Node.js (versión 14 o superior)
-- Cuenta de Gmail para enviar correos electrónicos
+- Cuenta de Hotmail (emmyjose82@hotmail.com) configurada
 - Cuenta de Twilio para enviar mensajes de WhatsApp
 
 ## Instalación
@@ -34,9 +34,8 @@ npm install
 # Server configuration
 PORT=3000
 
-# Email configuration (Gmail)
-EMAIL_USER=tu_correo@gmail.com
-EMAIL_APP_PASSWORD=tu_contraseña_de_aplicacion
+# Email configuration (Hotmail/Outlook)
+EMAIL_PASSWORD=tu_contraseña_de_hotmail
 
 # WhatsApp configuration (Twilio)
 TWILIO_ACCOUNT_SID=tu_account_sid
@@ -44,7 +43,7 @@ TWILIO_AUTH_TOKEN=tu_auth_token
 TWILIO_WHATSAPP_NUMBER=+14155238886  # Este es el número de sandbox de Twilio WhatsApp
 ```
 
-**Nota:** Para obtener la contraseña de aplicación de Gmail, necesitas activar la verificación en dos pasos y luego crear una contraseña de aplicación. Más información [aquí](https://support.google.com/accounts/answer/185833?hl=es).
+**Nota:** Para una mayor seguridad de tu cuenta de Hotmail, se recomienda configurar la verificación en dos pasos y utilizar una contraseña de aplicación específica.
 
 ## Configuración de WhatsApp con Twilio
 
