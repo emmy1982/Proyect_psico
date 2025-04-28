@@ -101,6 +101,38 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Botón de llamada - solo visible en móvil */
+.btn-call {
+    display: none;
+}
+
+.btn-call a {
+    background: #ef947d;
+    color: white;
+    padding: 8px 18px;
+    font-weight: bold;
+    transition: all 0.3s;
+    border-radius: 50px;
+}
+
+.btn-call a i {
+    margin-right: 5px;
+    animation: pulse 1.5s infinite;
+}
+
+.btn-call a:hover {
+    background: #ff5639;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
 .btn-cita-hero a {
     display: none;
 }
@@ -612,6 +644,8 @@ strong {
         justify-content: center;
         width: 100%;
         margin-top: 30px;
+        margin-left: 0;
+        margin-right: 0;
     }
     
     .nav-container.active .nav-list {
@@ -622,6 +656,12 @@ strong {
     
     .nav-container.active .nav-item {
         margin: 15px 0;
+    }
+    
+    /* Mostrar botón de llamada en menú móvil */
+    .nav-container.active .btn-call {
+        display: block;
+        margin-top: 20px;
     }
     
     .hamburger.active .bar:nth-child(2) {
@@ -663,17 +703,17 @@ strong {
 
 @media (max-width: 768px) {
 
-    .nav-left {
-        justify-content: flex-end;
-        margin: 0 auto;
-    }
-    
+    .nav-left, 
     .nav-right {
         justify-content: center;
         margin: 0 auto;
-        position: relative;
-        top: -260px;
     }
+
+    .nav-right {
+        position: relative;
+        top: -270px;
+    }
+    
     .about-section, .clinic-content {
         padding: 20px 15px;
     }
@@ -694,6 +734,11 @@ strong {
     .services-container {
         grid-template-columns: 1fr;
     }
+    .step-content {
+        flex: 1;
+        max-width: 70%;
+    }
+    
 }
 
 @media (max-width: 576px) {
@@ -997,7 +1042,7 @@ strong {
 
 .form-group input,
 .form-group textarea {
-    width: 100%;
+    width: 95%;
     padding: 12px;
     border: 1px solid #cbead6;
     border-radius: 4px;
@@ -1061,6 +1106,10 @@ strong {
     .form-container {
         flex-direction: column;
     }
+    .contact-form-section {
+        padding: 0 10px;
+        padding-bottom: 20px;
+    }
     
     .form-text, 
     .contact-form {
@@ -1113,5 +1162,48 @@ strong {
     .form-text, 
     .contact-form {
         padding: 30px;
+    }
+}
+
+/* Botón flotante de llamada */
+.call-floating-button {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 45px;
+    height: 45px;
+    background-color: #fc977e;
+    color: white;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 99;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    animation: pulse 1.5s infinite;
+}
+
+.call-floating-button i {
+    font-size: 1.5rem;
+}
+
+.call-floating-button:hover {
+    background-color: #ff5639;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .call-floating-button {
+        display: flex;
+    }
+    
+    /* Ajustar posición del botón para subir cuando está el de llamada */
+    .back-to-top {
+        right: 20px;
+    }
+    
+    .form-container {
+        flex-direction: column;
     }
 }

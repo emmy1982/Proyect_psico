@@ -212,8 +212,66 @@ document.addEventListener('DOMContentLoaded', function() {
         appointmentForm.scrollIntoView({ behavior: 'smooth' });
     }
 
+    // Función para enviar correo electrónico de confirmación
+    async function sendEmailConfirmation(appointmentData) {
+        try {
+            const response = await fetch('/api/sendEmailConfirmation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: appointmentData.email,
+                    nombre: appointmentData.nombre,
+                    fecha: appointmentData.fecha,
+                    hora: appointmentData.hora,
+                    tipoSesion: appointmentData.tipoSesion
+                })
+            });
+            
+            if (!response.ok) {
+                throw new Error('Error al enviar el correo de confirmación');
+            }
+            
+            console.log('Correo de confirmación enviado correctamente');
+            return true;
+        } catch (error) {
+            console.error('Error enviando correo de confirmación:', error);
+            return false;
+        }
+    }
+
+    // Función para enviar mensaje de WhatsApp
+    async function sendWhatsAppNotification(appointmentData) {
+        try {
+            const response = await fetch('/api/sendWhatsAppNotification', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    telefono: appointmentData.telefono,
+                    nombre: appointmentData.nombre,
+                    fecha: appointmentData.fecha,
+                    hora: appointmentData.hora,
+                    tipoSesion: appointmentData.tipoSesion
+                })
+            });
+            
+            if (!response.ok) {
+                throw new Error('Error al enviar la notificación por WhatsApp');
+            }
+            
+            console.log('Notificación por WhatsApp enviada correctamente');
+            return true;
+        } catch (error) {
+            console.error('Error enviando notificación WhatsApp:', error);
+            return false;
+        }
+    }
+
     // Manejar envío del formulario
-    function handleFormSubmit(e) {
+    async function handleFormSubmit(e) {
         e.preventDefault();
         
         // Validar que se ha seleccionado fecha y hora
@@ -237,13 +295,26 @@ document.addEventListener('DOMContentLoaded', function() {
         // En una aplicación real, aquí enviaríamos los datos al servidor
         console.log('Datos de la cita:', appointmentData);
         
-        // Actualizar datos en el modal
-        modalDate.textContent = appointmentData.fecha;
-        modalTime.textContent = appointmentData.hora;
-        modalType.textContent = appointmentData.tipoSesion === 'presencial' ? 'Presencial' : 'Online';
-        
-        // Mostrar modal de confirmación
-        showConfirmationModal();
+        // Enviar correo de confirmación y notificación de WhatsApp
+        try {
+            // Los hacemos en paralelo para no bloquear la interfaz
+            const emailPromise = sendEmailConfirmation(appointmentData);
+            const whatsappPromise = sendWhatsAppNotification(appointmentData);
+            
+            // Esperar a que ambas promesas se resuelvan
+            await Promise.all([emailPromise, whatsappPromise]);
+            
+            // Actualizar datos en el modal
+            modalDate.textContent = appointmentData.fecha;
+            modalTime.textContent = appointmentData.hora;
+            modalType.textContent = appointmentData.tipoSesion === 'presencial' ? 'Presencial' : 'Online';
+            
+            // Mostrar modal de confirmación
+            showConfirmationModal();
+        } catch (error) {
+            console.error('Error en el procesamiento de la cita:', error);
+            alert('Ha ocurrido un error al procesar tu cita. Por favor, inténtalo de nuevo más tarde.');
+        }
     }
 
     // Mostrar modal de confirmación

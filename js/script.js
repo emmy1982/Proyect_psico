@@ -55,43 +55,58 @@ hamburger.addEventListener('click', () => {
     }
 });
 
-// Cerrar menú al hacer clic en un enlace
-navItems.forEach(item => {
-    item.addEventListener('click', function() {
-        // Activar el elemento de menú actual
-        navItems.forEach(i => i.classList.remove('active'));
-        this.classList.add('active');
+// Manejar clics en enlaces del menú
+document.querySelectorAll('.nav-item a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
         
-        // Cerrar el menú móvil si está abierto
-        if (hamburger.classList.contains('active')) {
-            hamburger.classList.remove('active');
-            navContainer.classList.remove('active');
-            document.body.classList.remove('no-scroll');
+        // Si es un enlace interno (empieza con #)
+        if (href.startsWith('#')) {
+            e.preventDefault();
             
-            // Restaurar posición del logo
-            if (window.innerWidth <= 1100) {
-                logo.style.position = 'static';
-                logo.style.top = 'auto';
-                logo.style.transform = 'none';
+            // Activar el elemento de menú actual
+            navItems.forEach(item => item.classList.remove('active'));
+            this.parentElement.classList.add('active');
+            
+            // Obtener el elemento de destino
+            const targetElement = document.querySelector(href);
+            
+            if (targetElement) {
+                // Cerrar el menú móvil si está abierto
+                if (hamburger.classList.contains('active')) {
+                    hamburger.classList.remove('active');
+                    navContainer.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                    
+                    // Restaurar posición del logo
+                    if (window.innerWidth <= 1100) {
+                        logo.style.position = 'static';
+                        logo.style.top = 'auto';
+                        logo.style.transform = 'none';
+                    }
+                }
+                
+                // Desplazarse al elemento
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
             }
-        }
-    });
-});
-
-// Smooth scroll para enlaces internos
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
+        } else {
+            // Si es un enlace externo, no es necesario preventDefault
+            // pero sí cerrar el menú móvil
+            if (hamburger.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navContainer.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+                
+                // Restaurar posición del logo
+                if (window.innerWidth <= 1100) {
+                    logo.style.position = 'static';
+                    logo.style.top = 'auto';
+                    logo.style.transform = 'none';
+                }
+            }
         }
     });
 });
