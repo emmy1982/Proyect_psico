@@ -295,14 +295,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // En una aplicación real, aquí enviaríamos los datos al servidor
         console.log('Datos de la cita:', appointmentData);
         
-        // Enviar correo de confirmación y notificación de WhatsApp
+        // Enviar solo correo de confirmación (sin WhatsApp)
         try {
-            // Los hacemos en paralelo para no bloquear la interfaz
-            const emailPromise = sendEmailConfirmation(appointmentData);
-            const whatsappPromise = sendWhatsAppNotification(appointmentData);
-            
-            // Esperar a que ambas promesas se resuelvan
-            await Promise.all([emailPromise, whatsappPromise]);
+            // Enviamos solo el correo
+            await sendEmailConfirmation(appointmentData);
             
             // Actualizar datos en el modal
             modalDate.textContent = appointmentData.fecha;

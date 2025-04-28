@@ -76,7 +76,7 @@ app.post('/api/sendWhatsAppNotification', async (req, res) => {
     // Asegúrate de tener estas variables configuradas en tu archivo .env
     const accountSid = process.env.TWILIO_ACCOUNT_SID;
     const authToken = process.env.TWILIO_AUTH_TOKEN;
-    const fromNumber = process.env.TWILIO_WHATSAPP_NUMBER;
+    const fromNumber = '+19787056482'; // Número de Twilio del usuario
     
     const url = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`;
     const auth = {
